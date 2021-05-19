@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get(RouteServiceProvider::HOME, [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -26,3 +28,7 @@ Route::get('/about', function () {
 Route::get('/services', function () {
     return view('services');
 })->name('services');
+
+Auth::routes();
+
+Route::resource('categories',CategoryController::class);

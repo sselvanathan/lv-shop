@@ -15,14 +15,14 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#!">Start Bootstrap</a>
+        <a class="navbar-brand" href="{{ route('home') }}">Your Shop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#!">
+                    <a class="nav-link" href="{{ route('home') }}">
                         Home
                         <span class="sr-only">(current)</span>
                     </a>
@@ -30,6 +30,16 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+
+                @guest
+                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                @endguest
+
+                @auth()
+                    <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit()">Log out</a></li>
+                    <form action="{{ route('logout') }}" method="POST" id="logout-form"></form>@csrf
+                @endauth
             </ul>
         </div>
     </div>
@@ -42,7 +52,7 @@
 </div>
 <!-- Footer-->
 <footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy;  Shoppex 2021</p></div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
