@@ -31,4 +31,4 @@ Route::get('/services', function () {
 
 Auth::routes();
 
-Route::resource('categories',CategoryController::class);
+Route::resource('categories',CategoryController::class)->middleware('auth');

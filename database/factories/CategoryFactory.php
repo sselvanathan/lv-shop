@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'created_at' => $this->faker->dateTime(),
+            'created_at' => now(),
             'updated_at' => now(),
         ];
     }
