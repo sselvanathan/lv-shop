@@ -48,7 +48,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'description' => $request->description,
             'category_id' => $request->category_id,
-            'photo' => '',
+            'photo' => $request->file('photo')->store('photos','public'),
         ]);
 
         return redirect()->route('products.index');
@@ -94,7 +94,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'category_id' => $request->category_id,
-            'photo' => '',
+            'photo' => $request->file('photo')->store('photos','public'),
         ]);
 
         return redirect()->route('products.index');

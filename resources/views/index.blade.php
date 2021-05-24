@@ -44,7 +44,7 @@
                     @foreach($products as $product)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="/?product_id={{ $product->id }}"><img class="card-img-top" src="https://via.placeholder.com/700x400"
+                                <a href="/?product_id={{ $product->id }}"><img class="card-img-top" src="{{ url(Storage::url($product->photo)) }}"
                                                                                {{--                                <a href="/?product_id={{ $product->id }}"><img class="card-img-top" src="{{ $product->photo }}"--}}
                                                   alt="..."/></a>
                                 <div class="card-body">
