@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get(RouteServiceProvider::HOME, [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get(RouteServiceProvider::HOME, [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -31,4 +33,7 @@ Route::get('/services', function () {
 
 Auth::routes();
 
-Route::resource('categories',CategoryController::class)->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
+});
