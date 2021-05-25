@@ -6,7 +6,6 @@ use App\Http\Requests\StoreProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Session\Store;
 
 class ProductController extends Controller
 {
@@ -19,7 +18,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('products.index', compact('products'));
+        return view('panel.products.index', compact('products'));
     }
 
     /**
@@ -31,16 +30,16 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('products.create', compact('categories'));
+        return view('panel.products.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreProductRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
 
         Product::create([
@@ -48,7 +47,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'description' => $request->description,
             'category_id' => $request->category_id,
-            'photo' => $request->file('photo')->store('photos','public'),
+            'photo' => $request->file('photo')->store('photos', 'public'),
         ]);
 
         return redirect()->route('products.index');
@@ -76,17 +75,17 @@ class ProductController extends Controller
         $product = Product::findorFail($id);
         $categories = Category::all();
 
-        return view('products.edit', compact('product', 'categories'));
+        return view('panel.products.edit', compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param StoreProductRequest $request
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductRequest $request, $id): \Illuminate\Http\Response
     {
         $product = Product::findorFail($id);
         $product->update([

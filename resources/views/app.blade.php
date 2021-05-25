@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico')}}"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
 </head>
 <body>
 <!-- Navigation-->
@@ -40,11 +41,8 @@
                 @endguest
 
                 @auth()
-                    <li class="nav-item {{ Route::is('products.index') ? 'active' : '' }}"><a class="nav-link"
-                                                                                              href="{{ route('products.index') }}">Products</a>
-                    </li>
-                    <li class="nav-item {{ Route::is('categories.index') ? 'active' : '' }}"><a class="nav-link"
-                                                                                                href="{{ route('categories.index') }}">Categories</a>
+                    <li class="nav-item {{ Route::is('panel.index') ? 'active' : '' }}"><a class="nav-link"
+                                                                                              href="{{ route('panel.index') }}">Panel</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#"
                                             onclick="document.getElementById('logout-form').submit()">Log out</a></li>
@@ -55,7 +53,7 @@
     </div>
 </nav>
 <!-- Page Content-->
-<div class="container">
+<div class="container content">
     <div class="row">
         @yield('content')
     </div>

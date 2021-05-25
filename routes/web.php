@@ -34,6 +34,9 @@ Route::get('/services', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('categories', CategoryController::class);
-    Route::resource('products', ProductController::class);
+    Route::get('/panel', function () {
+        return view('panel.index');
+    })->name('panel.index');
+    Route::resource('panel/categories', CategoryController::class);
+    Route::resource('panel/products', ProductController::class);
 });

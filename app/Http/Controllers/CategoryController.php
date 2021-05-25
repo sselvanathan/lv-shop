@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        return view('categories.index',compact('categories'));
+        return view('panel.categories.index',compact('categories'));
     }
 
     /**
@@ -26,14 +26,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('panel.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -67,7 +67,7 @@ class CategoryController extends Controller
     {
         $category = Category::findorFail($id);
 
-        return view('categories.edit',compact('category'));
+        return view('panel.categories.edit',compact('category'));
     }
 
     /**
