@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Providers\RouteServiceProvider;
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/panel', function () {
         return view('panel.index');
     })->name('panel.index');
+    Route::resource('panel/banners', BannerController::class);
     Route::resource('panel/categories', CategoryController::class);
     Route::resource('panel/products', ProductController::class);
 });

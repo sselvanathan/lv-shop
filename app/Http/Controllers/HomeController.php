@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -11,6 +12,8 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $products = Product::with('category')->get();
-        return view('index', compact('categories', 'products'));
+        $banners = Banner::all();
+
+        return view('index', compact('categories', 'products', 'banners'));
     }
 }

@@ -37,7 +37,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -83,9 +83,9 @@ class ProductController extends Controller
      *
      * @param StoreProductRequest $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(StoreProductRequest $request, $id): \Illuminate\Http\Response
+    public function update(StoreProductRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
         $product = Product::findorFail($id);
         $product->update([
