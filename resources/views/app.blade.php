@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title> Shoppex</title>
-    <!-- Favicon-->
+    <meta name="_token" content="{{ csrf_token() }}">
+    <title>{{config('app.name'). '-' . ucfirst(Route::currentRouteName()) }}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico')}}"/>
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet"/>
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
 <!-- Navigation-->
@@ -62,10 +61,5 @@
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Shoppex 2021</p></div>
 </footer>
-<!-- Bootstrap core JS-->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 </html>
